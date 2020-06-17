@@ -5,6 +5,8 @@
 body {
     font-family: $main_font_family;
     color: $default_color;
+    background-color: $secondary_background_color;
+    min-height: 100vh;
 }
 
 .container {

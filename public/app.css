@@ -388,6 +388,8 @@ template {
 body {
   font-family: "Lato", sans-serif;
   color: white;
+  background-color: #1E2D3B;
+  min-height: 100vh;
 }
 
 .container {
@@ -399,6 +401,8 @@ body {
 header {
   height: 70px;
   background-color: #2e3a46;
+  position: fixed;
+  width: 100%;
 }
 
 header .container {
@@ -420,8 +424,7 @@ header .container select {
 }
 
 main #album {
-  background-color: #1E2D3B;
-  padding: 50px 0;
+  padding: 130px 0 50px 0;
 }
 
 main #album .container {

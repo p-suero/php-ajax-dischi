@@ -1,6 +1,8 @@
 header {
     height: 70px;
     background-color: $default_background_color;
+    position: fixed;
+    width: 100%;
 
     .container{
         @include flex(row,space-between,center);

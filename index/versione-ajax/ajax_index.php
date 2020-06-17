@@ -14,7 +14,7 @@
                     <img src="../../public/img/logo.png" alt="Logo">
                 </div>
                 <div id="header-right">
-                    <select>
+                    <select id="author-filter">
                         <option value="">Tutti gli artitsti</option>
                     </select>
                 </div>
@@ -39,6 +39,9 @@
                     <p class="year">{{anno}}</p>
                 </div>
             </div>
+        </script>
+        <script id="option-template" type="text/x-handlebars-template">
+            <option value="{{valore}}">{{testo}}</option>
         </script>
         <!-- link script JS -->
         <script src="../../public/js/versione-ajax/app.js" charset="utf-8"></script>
