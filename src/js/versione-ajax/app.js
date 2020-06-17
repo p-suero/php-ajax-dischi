@@ -26,6 +26,7 @@ $(document).ready(function() {
         }
     })
 
+    //intercetto il cambio opzione sulla select
     $("#author-filter").change(function() {
         //creo una variabile con il valore dell'option selezionata
         var option_selezionata = $(this).val();

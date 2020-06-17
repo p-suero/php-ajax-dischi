@@ -18,8 +18,25 @@
                     <img src="../../public/img/logo.png" alt="Logo">
                 </div>
                 <div id="header-right">
-                    <select class="" name="">
+                    <select id="author-filter">
                         <option value="">Tutti gli artitsti</option>
+                        <?php
+                        //creo un array dove inserire gli artisti
+                        $artisti = [];
+                        //ciclo gli autisti
+                        foreach ($dischi as $disco) {
+                            //creo una variabile con il nome dell'artista corrente
+                            $autore_corrente = $disco["author"];
+                            //se l'array non contiene giò l'artista lo aggiungo in quest ultimo e creo un option
+                            if (in_array($autore_corrente, $artisti) == false) {
+                                $artisti[] = $autore_corrente;?>
+                                <option value="<?php echo $autore_corrente ?>">
+                                     <?php echo $autore_corrente ?>
+                                 </option>
+                            <?php
+                            }
+                        }
+                         ?>
                     </select>
                 </div>
             </div>
@@ -48,6 +65,21 @@
                 </div>
             </section>
         </main>
+        <!-- template di handlebars -->
+        <!-- template di handlebars -->
+        <script id="disco-template" type="text/x-handlebars-template">
+            <div class="disco-item">
+                <div class="poster-disco">
+                    <img src="{{src}}" alt="">
+                </div>
+                <div class="info-disco">
+                    <h2>{{titolo}}</h2>
+                    <p class="author">{{autore}}</p>
+                    <p class="genre">{{genere}}</p>
+                    <p class="year">{{anno}}</p>
+                </div>
+            </div>
+        </script>
         <!-- link script JS -->
         <script src="../../public/js/versione-php/app.js" charset="utf-8"></script>
     </body>

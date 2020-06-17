@@ -16111,7 +16111,8 @@ $(document).ready(function () {
     "error": function error() {
       alert("Si è verificato un errore");
     }
-  });
+  }); //intercetto il cambio opzione sulla select
+
   $("#author-filter").change(function () {
     //creo una variabile con il valore dell'option selezionata
     var option_selezionata = $(this).val(); //al cambio della select effettuo una chiamata ajax
