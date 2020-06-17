@@ -1,0 +1,16 @@
+header {
+    height: 70px;
+    background-color: $default_background_color;
+
+    .container{
+        @include flex(row,space-between,center);
+
+        img {
+            @include img_set(50px,50px);
+        }
+
+        select {
+            padding: 8px 15px;
+        }
+    }
+}

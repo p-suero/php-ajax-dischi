@@ -381,3 +381,86 @@ template {
 
 /* end normalize */
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+
+.container {
+  width: 1070px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+header {
+  height: 70px;
+  background-color: #2e3a46;
+}
+
+header .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .container img {
+  max-width: 50px;
+  height: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+header .container select {
+  padding: 8px 15px;
+}
+
+main #album {
+  background-color: #1E2D3B;
+  padding: 50px 0;
+}
+
+main #album .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+main #album .container .disco-item {
+  height: 360px;
+  width: 220px;
+  padding: 20px 10px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #2e3a46;
+  margin: 15px;
+  cursor: pointer;
+}
+
+main #album .container .disco-item img {
+  max-width: 160px;
+  height: 140px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+main #album .container .disco-item h2 {
+  font-size: 20px;
+  height: 55px;
+}
+
+main #album .container .disco-item p {
+  color: grey;
+  margin: 15px 0 0 0;
+}
+
+main #album .container .disco-item .author {
+  font-size: 18px;
+}
+

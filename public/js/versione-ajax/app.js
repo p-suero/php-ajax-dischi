@@ -16093,6 +16093,8 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
+$(document).reasy;
+
 /***/ }),
 
 /***/ "./src/scss/app.scss":

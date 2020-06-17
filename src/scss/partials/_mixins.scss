@@ -1,0 +1,16 @@
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin img_set ($width, $heigth) {
+    max-width: $width;
+    height: $heigth;
+    object-fit: contain;
+}
+
+@mixin bd_radius($radius) {
+    border-radius: $radius;
+}

@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $main_font_family;
+    color: $default_color;
+}
+
+.container {
+    width: 1070px;
+    height: 100%;
+    margin: 0 auto;
+}

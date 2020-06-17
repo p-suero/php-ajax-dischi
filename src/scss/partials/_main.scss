@@ -1,0 +1,38 @@
+main #album {
+    background-color: $secondary_background_color;
+    padding: 50px 0;
+
+    .container {
+        @include flex(row, center, center);
+        flex-wrap: wrap;
+
+        .disco-item {
+            height: 360px;
+            width: 220px;
+            padding: 20px 10px;
+            @include bd_radius(20px);
+            text-align: center;
+            background-color: $default_background_color;
+            margin: 15px;
+            cursor: pointer;
+
+            img {
+                @include img_set(160px, 140px);
+            }
+
+            h2 {
+                font-size: $big_font_size;
+                height: 55px;
+            }
+
+            p {
+                color: $secondary_color;
+                margin: 15px 0 0 0;
+            }
+
+            .author {
+                font-size: $medium_font_size;
+            }
+        }
+    }
+}
