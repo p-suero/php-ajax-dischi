@@ -16103,54 +16103,50 @@ $(document).ready(function () {
 
   var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php"; //effettuo la chiamata ajax per recuperare i dischi
 
-  $.ajax({
-    "url": url,
-    "method": "GET",
-    "success": function success(data) {
-      //chiamo la funzione gestione_dati che si occupa di reperire le info dai dischi
-      gestione_dati(data);
-    },
-    "error": function error() {
-      alert("Si è verificato un errore");
-    }
-  }); //intercetto il cambio opzione sulla select
+  chiamata_ajax(false, ""); //intercetto il cambio opzione sulla select
 
   $("#author-filter").change(function () {
     //creo una variabile con il valore dell'option selezionata
-    var option_selezionata = $(this).val(); //al cambio della select effettuo una chiamata ajax
+    var option_selezionata = $(this).val(); //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata_ajax_generale
 
+    if (option_selezionata == "") {
+      chiamata_ajax(false, "");
+    } else {
+      chiamata_ajax(true, option_selezionata);
+    }
+  }); //*****FUNZIONI********
+
+  function chiamata_ajax(filter, nome_artista) {
     $.ajax({
       "url": url,
       "method": "GET",
       "data": {
-        "artista": option_selezionata
+        "artista": nome_artista
       },
       "success": function success(data) {
-        //ciclo i risultati
-        for (var i = 0; i < data.length; i++) {
-          //designo una variabile contenente il disco corrente
-          var disco_corrente = data[i]; //rimuovo tutti i dischi in pagina
+        //rimuovo tutti i dischi in pagina
+        $("#album .container").html(""); //chiamo la funzione gestione_dati che si occupa di reperire le info dai dischi
 
-          $("#album .container").html(""); //aggiungo il disco in pagina
-
-          aggiungi_disco(disco_corrente);
-        }
+        gestione_dati(data, filter);
       },
       "error": function error() {
         alert("Si è verificato un errore");
       }
     });
-  }); //*****FUNZIONI********
+  }
 
-  function gestione_dati(lista_dischi) {
+  function gestione_dati(lista_dischi, filter) {
     //ciclo l'array per recuperare i singoli dischi
     for (var i = 0; i < lista_dischi.length; i++) {
       //creo una variabile contenente il disco corrente
       var disco = lista_dischi[i]; //inserisco il disco in pagina
 
-      aggiungi_disco(disco); //popolo la select
+      aggiungi_disco(disco);
 
-      popola_select(disco.author);
+      if (filter == false) {
+        //popolo la select
+        popola_select(disco.author);
+      }
     }
   }
 

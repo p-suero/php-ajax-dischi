@@ -16096,34 +16096,50 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 $(document).ready(function () {
   //preparo il template per il disco
   var template_html = $("#disco-template").html();
-  var template_function = Handlebars.compile(template_html); //intercetto il cambio opzione sulla select
+  var template_function = Handlebars.compile(template_html); //url file esterno
+
+  var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php"; //intercetto il cambio opzione sulla select
 
   $("#author-filter").change(function () {
     //creo una variabile con il valore dell'option selezionata
-    var option_selezionata = $(this).val(); //al cambio della select effettuo una chiamata ajax
+    var option_selezionata = $(this).val(); //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata_ajax_generale
 
+    if (option_selezionata == "") {
+      chiamata_ajax(false, "");
+    } else {
+      chiamata_ajax(true, option_selezionata);
+    }
+  }); //*****FUNZIONI********//
+  //********************//
+
+  function chiamata_ajax(filter, nome_artista) {
     $.ajax({
-      "url": "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php",
+      "url": url,
       "method": "GET",
       "data": {
-        "artista": option_selezionata
+        "artista": nome_artista
       },
       "success": function success(data) {
-        //ciclo i risultati
-        for (var i = 0; i < data.length; i++) {
-          //designo una variabile contenente il disco corrente
-          var disco_corrente = data[i]; //rimuovo tutti i dischi in pagina
+        //rimuovo tutti i dischi in pagina
+        $("#album .container").html(""); //chiamo la funzione gestione_dati che si occupa di reperire le info dai dischi
 
-          $("#album .container").html(""); //aggiungo il disco in pagina
-
-          aggiungi_disco(disco_corrente);
-        }
+        gestione_dati(data, filter);
       },
       "error": function error() {
         alert("Si è verificato un errore");
       }
     });
-  }); //funzione che aggiunge in pagina il disco
+  }
+
+  function gestione_dati(lista_dischi, filter) {
+    //ciclo l'array per recuperare i singoli dischi
+    for (var i = 0; i < lista_dischi.length; i++) {
+      //creo una variabile contenente il disco corrente
+      var disco = lista_dischi[i]; //inserisco il disco in pagina
+
+      aggiungi_disco(disco);
+    }
+  }
 
   function aggiungi_disco(disco) {
     //preparo l'oggetto di handlebars
