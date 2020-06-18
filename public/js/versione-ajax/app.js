@@ -16122,20 +16122,11 @@ $(document).ready(function () {
     $.ajax({
       "url": url,
       "method": "GET",
+      "data": {
+        "artista": option_selezionata
+      },
       "success": function success(data) {
-        //rimuovo tutti i dischi dalla pagina
-        $("#album .container").empty();
-
-        for (var i = 0; i < data.length; i++) {
-          var disco = data[i]; //salvo in variabile l'autore corrente
-
-          var autore_corrente = data[i].author; //verifico se l'autore corrente è uguale al valore del option selezionata
-
-          if (option_selezionata == autore_corrente || option_selezionata == "") {
-            //eseguo la funzione aggiungi disco
-            aggiungi_disco(disco);
-          }
-        }
+        console.log(data);
       },
       "error": function error() {
         alert("Si è verificato un errore");

@@ -73,6 +73,19 @@ $dischi = [
     ]
 ];
 
+$dischi_filtrati = [];
+
+
+if (!empty($_GET["artista"])) {
+    foreach ($dischi as $disco) {
+        if ($disco["author"] == $_GET["artista"]) {
+            $dischi_filtrati[] = $disco;
+        }
+    }
+    $dischi = $dischi_filtrati;
+}
+
+
 //inserisco questa funzione per far leggere correttamente il json a j-query
 header('Content-Type: application/json');
 //stampo i dati tradotti in json
