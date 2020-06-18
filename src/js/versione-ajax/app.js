@@ -13,9 +13,12 @@ $(document).ready(function() {
     var option_template_html = $("#option-template").html();
     var template_function_option = Handlebars.compile(option_template_html);
 
+    //url file esterno
+    var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php";
+
     //effettuo la chiamata ajax per recuperare i dischi
     $.ajax({
-        "url": "../../public/database/ajax_dischi.php",
+        "url": url,
         "method": "GET",
         "success": function(data) {
             //chiamo la funzione gestione_dati che si occupa di reperire le info dai dischi
@@ -32,7 +35,7 @@ $(document).ready(function() {
         var option_selezionata = $(this).val();
         //al cambio della select effettuo una chiamata ajax
         $.ajax({
-            "url": "../../public/database/ajax_dischi.php",
+            "url": url,
             "method": "GET",
             "success": function(data) {
                 //rimuovo tutti i dischi dalla pagina

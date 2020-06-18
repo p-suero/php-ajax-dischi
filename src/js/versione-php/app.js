@@ -15,7 +15,7 @@ $(document).ready(function() {
         var option_selezionata = $(this).val();
         //al cambio della select effettuo una chiamata ajax
         $.ajax({
-            "url": "../../public/database/ajax_dischi.php",
+            "url": "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php",
             "method": "GET",
             "success": function(data) {
                 //rimuovo tutti i dischi dalla pagina
