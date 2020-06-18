@@ -16101,22 +16101,22 @@ $(document).ready(function () {
   var option_template_html = $("#option-template").html();
   var template_function_option = Handlebars.compile(option_template_html); //url file esterno
 
-  var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php"; //effettuo la chiamata ajax per recuperare i dischi
+  var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php"; //effettuo la chiamata ajax per recuperare i dischi inserendo gli apici vuoti, cosi' da entrare nella condizione per stampare la select
 
-  chiamata_ajax(false, ""); //intercetto il cambio opzione sulla select
+  chiamata_ajax(""); //intercetto il cambio opzione sulla select
 
   $("#author-filter").change(function () {
     //creo una variabile con il valore dell'option selezionata
     var option_selezionata = $(this).val(); //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata_ajax_generale
 
     if (option_selezionata == "") {
-      chiamata_ajax(false, "");
+      chiamata_ajax("");
     } else {
-      chiamata_ajax(true, option_selezionata);
+      chiamata_ajax(option_selezionata);
     }
   }); //*****FUNZIONI********
 
-  function chiamata_ajax(filter, nome_artista) {
+  function chiamata_ajax(nome_artista) {
     $.ajax({
       "url": url,
       "method": "GET",
@@ -16127,7 +16127,7 @@ $(document).ready(function () {
         //rimuovo tutti i dischi in pagina
         $("#album .container").html(""); //chiamo la funzione gestione_dati che si occupa di reperire le info dai dischi
 
-        gestione_dati(data, filter);
+        gestione_dati(data, nome_artista);
       },
       "error": function error() {
         alert("Si è verificato un errore");
@@ -16135,15 +16135,15 @@ $(document).ready(function () {
     });
   }
 
-  function gestione_dati(lista_dischi, filter) {
+  function gestione_dati(lista_dischi, nome_artista) {
     //ciclo l'array per recuperare i singoli dischi
     for (var i = 0; i < lista_dischi.length; i++) {
       //creo una variabile contenente il disco corrente
       var disco = lista_dischi[i]; //inserisco il disco in pagina
 
-      aggiungi_disco(disco);
+      aggiungi_disco(disco); //se non vengono filtrati gli artisti vado a popolare la select
 
-      if (filter == false) {
+      if (nome_artista == "") {
         //popolo la select
         popola_select(disco.author);
       }
