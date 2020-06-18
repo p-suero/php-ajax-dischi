@@ -16,17 +16,18 @@ $(document).ready(function() {
     //url file esterno
     var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php";
 
-    //effettuo la chiamata ajax per recuperare i dischi
+    //effettuo la chiamata ajax per recuperare i dischi all'apertura della pagina
     chiamata_ajax(false,"");
 
     //intercetto il cambio opzione sulla select
     $("#author-filter").change(function() {
         //creo una variabile con il valore dell'option selezionata
         var option_selezionata = $(this).val();
-        //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata_ajax_generale
+        //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata ajax senza parametro "nome artista"
         if (option_selezionata == "") {
             chiamata_ajax(false,"");
         } else {
+            //altrimenti effettuo la chiamata ajax passando il parametro dell'artisto selezionato nella select
             chiamata_ajax(true,option_selezionata);
         }
     })
@@ -43,7 +44,7 @@ $(document).ready(function() {
             "success": function(data) {
                 //rimuovo tutti i dischi in pagina
                 $("#album .container").html("");
-                //chiamo la funzione gestione_dati che si occupa di reperire le info dai dischi
+                //chiamo la funzione gestione_dati che si occupa di raccogliere le info dai dischi
                 gestione_dati(data,filter);
             },
             "error": function() {

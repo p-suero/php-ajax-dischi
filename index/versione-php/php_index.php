@@ -21,9 +21,9 @@
                     <select id="author-filter">
                         <option value="">Tutti gli artitsti</option>
                         <?php
-                        //creo un array dove inserire gli artisti
+                        //creo un array dove inserire gli artisti 
                         $artisti = [];
-                        //ciclo gli autisti
+                        //ciclo gli artisti
                         foreach ($dischi as $disco) {
                             //creo una variabile con il nome dell'artista corrente
                             $autore_corrente = $disco["author"];
@@ -46,7 +46,7 @@
             <section id="album">
                 <div class="container">
                     <?php
-                    //ciclo l'array per accedere ai singoli dischi e stampare le info
+                    //ciclo l'array per accedere ai singoli dischi e quindi stampare le info
                     foreach ($dischi as $disco) { ?>
                         <div class="disco-item">
                             <div class="poster-disco">
@@ -65,7 +65,6 @@
                 </div>
             </section>
         </main>
-        <!-- template di handlebars -->
         <!-- template di handlebars -->
         <script id="disco-template" type="text/x-handlebars-template">
             <div class="disco-item">
