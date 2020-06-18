@@ -16109,7 +16109,15 @@ $(document).ready(function () {
         "artista": option_selezionata
       },
       "success": function success(data) {
-        console.log(data);
+        //ciclo i risultati
+        for (var i = 0; i < data.length; i++) {
+          //designo una variabile contenente il disco corrente
+          var disco_corrente = data[i]; //rimuovo tutti i dischi in pagina
+
+          $("#album .container").html(""); //aggiungo il disco in pagina
+
+          aggiungi_disco(disco_corrente);
+        }
       },
       "error": function error() {
         alert("Si è verificato un errore");
