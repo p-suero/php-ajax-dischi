@@ -31,8 +31,8 @@ $(document).ready(function() {
         }
     })
 
-
-    //*****FUNZIONI********
+    //*****FUNZIONI********//
+    //********************//
     function chiamata_ajax(filter,nome_artista) {
         $.ajax({
             "url": url,
@@ -87,7 +87,6 @@ $(document).ready(function() {
                 "valore" : autore,
                 "testo" : autore
             };
-
             //preparo la funzione di handlebars
             var html_finale = template_function_option(context_option);
             $("#author-filter").append(html_finale);
