@@ -1,6 +1,6 @@
 <?php
     //includo la pagina esterna contenente la lista album
-    require "../../public/database/php_dischi.php";
+    require "../../database/php_dischi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <title>Dischi musicali</title>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../../public/app.css">
+        <link rel="stylesheet" href="../../public/css/app.css">
     </head>
     <body>
         <!-- inizio header -->
@@ -21,7 +21,7 @@
                     <select id="author-filter">
                         <option value="">Tutti gli artitsti</option>
                         <?php
-                        //creo un array dove inserire gli artisti 
+                        //creo un array dove inserire gli artisti
                         $artisti = [];
                         //ciclo gli artisti
                         foreach ($dischi as $disco) {

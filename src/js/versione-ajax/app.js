@@ -14,7 +14,8 @@ $(document).ready(function() {
     var template_function_option = Handlebars.compile(option_template_html);
 
     //url file esterno
-    var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php";
+
+    var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/database/ajax_dischi.php";
 
     //effettuo la chiamata ajax per recuperare i dischi all'apertura della pagina
     chiamata_ajax(false,"");

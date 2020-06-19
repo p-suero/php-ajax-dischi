@@ -16098,15 +16098,16 @@ $(document).ready(function () {
   var template_html = $("#disco-template").html();
   var template_function = Handlebars.compile(template_html); //url file esterno
 
-  var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/public/database/ajax_dischi.php"; //intercetto il cambio opzione sulla select
+  var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/database/ajax_dischi.php"; //intercetto il cambio opzione sulla select
 
   $("#author-filter").change(function () {
     //creo una variabile con il valore dell'option selezionata
-    var option_selezionata = $(this).val(); //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata_ajax_generale
+    var option_selezionata = $(this).val(); //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata ajax senza parametro "nome artista"
 
     if (option_selezionata == "") {
       chiamata_ajax("");
     } else {
+      //altrimenti effettuo la chiamata ajax passando il parametro dell'artista selezionata nella select
       chiamata_ajax(option_selezionata);
     }
   }); //*****FUNZIONI********//
