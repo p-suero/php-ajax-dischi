@@ -41,30 +41,28 @@
                 </div>
             </div>
         </header>
-        <main>
-            <!-- inizio sezione contenente gli album -->
-            <section id="album">
-                <div class="container">
-                    <?php
-                    //ciclo l'array per accedere ai singoli dischi e quindi stampare le info
-                    foreach ($dischi as $disco) { ?>
-                        <div class="disco-item">
-                            <div class="poster-disco">
-                                <img src="<?php echo $disco["poster"] ?>" alt="<?php echo "Copertina " . $disco["title"] ?>">
-                            </div>
-                            <div class="info-disco">
-                                <h2><?php echo $disco["title"] ?></h2>
-                                <p class="author"><?php echo $disco["author"] ?></p>
-                                <p class="genre"><?php echo $disco["genre"] ?></p>
-                                <p class="year"><?php echo $disco["year"] ?></p>
-                            </div>
+        <!-- inizio sezione contenente gli album -->
+        <div id="album">
+            <div class="container">
+                <?php
+                //ciclo l'array per accedere ai singoli dischi e quindi stampare le info
+                foreach ($dischi as $disco) { ?>
+                    <div class="disco-item">
+                        <div class="poster-disco">
+                            <img src="<?php echo $disco["poster"] ?>" alt="<?php echo "Copertina " . $disco["title"] ?>">
                         </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </section>
-        </main>
+                        <div class="info-disco">
+                            <h2><?php echo $disco["title"] ?></h2>
+                            <p class="author"><?php echo $disco["author"] ?></p>
+                            <p class="genre"><?php echo $disco["genre"] ?></p>
+                            <p class="year"><?php echo $disco["year"] ?></p>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
         <!-- template di handlebars -->
         <script id="disco-template" type="text/x-handlebars-template">
             <div class="disco-item">

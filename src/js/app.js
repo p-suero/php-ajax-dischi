@@ -9,13 +9,11 @@ $(document).ready(function() {
     var template_html = $("#disco-template").html();
     var template_function = Handlebars.compile(template_html);
 
-
-    //url file esterno
-    var url = "../../database/api.php";
+    //url
+    var url = "../../database/dischi.php";
 
     //se la chiamata viene dall'index html popolo la pagina con ajax
     if ($(".ajax-page").length) {
-        console.log("ciao");
         //preparo il template per le option
         var option_template_html = $("#option-template").html();
         var template_function_option = Handlebars.compile(option_template_html);
@@ -31,7 +29,7 @@ $(document).ready(function() {
         var option_selezionata = $(this).val();
         //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata ajax senza parametro "nome artista"
         if (option_selezionata == "") {
-            chiamata_ajax(true,"");
+            chiamata_ajax(true);
         } else {
             //altrimenti effettuo la chiamata ajax passando il parametro dell'artisto selezionato nella select
             chiamata_ajax(true,option_selezionata);
@@ -67,7 +65,6 @@ $(document).ready(function() {
             //inserisco il disco in pagina
             aggiungi_disco(disco);
             if (filter == false) {
-                console.log("ciao");
                 //popolo la select
                 popola_select(disco.author);
             }

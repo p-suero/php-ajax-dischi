@@ -423,11 +423,11 @@ header .container select {
   padding: 8px 15px;
 }
 
-main #album {
+#album {
   padding: 130px 0 50px 0;
 }
 
-main #album .container {
+#album .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -435,7 +435,7 @@ main #album .container {
   flex-wrap: wrap;
 }
 
-main #album .container .disco-item {
+#album .container .disco-item {
   height: 360px;
   width: 220px;
   padding: 20px 10px;
@@ -446,24 +446,24 @@ main #album .container .disco-item {
   cursor: pointer;
 }
 
-main #album .container .disco-item img {
+#album .container .disco-item img {
   max-width: 160px;
   height: 140px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-main #album .container .disco-item h2 {
+#album .container .disco-item h2 {
   font-size: 20px;
   height: 55px;
 }
 
-main #album .container .disco-item p {
+#album .container .disco-item p {
   color: grey;
   margin: 15px 0 0 0;
 }
 
-main #album .container .disco-item .author {
+#album .container .disco-item .author {
   font-size: 18px;
 }
 

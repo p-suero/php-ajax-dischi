@@ -16096,13 +16096,12 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 $(document).ready(function () {
   //preparo il template per il disco
   var template_html = $("#disco-template").html();
-  var template_function = Handlebars.compile(template_html); //url file esterno
+  var template_function = Handlebars.compile(template_html); //url
 
-  var url = "../../database/api.php"; //se la chiamata viene dall'index html popolo la pagina con ajax
+  var url = "../../database/dischi.php"; //se la chiamata viene dall'index html popolo la pagina con ajax
 
   if ($(".ajax-page").length) {
-    console.log("ciao"); //preparo il template per le option
-
+    //preparo il template per le option
     var option_template_html = $("#option-template").html();
     var template_function_option = Handlebars.compile(option_template_html); //effettuo la chiamata ajax per recuperare i dischi all'apertura della pagina
 
@@ -16115,7 +16114,7 @@ $(document).ready(function () {
     var option_selezionata = $(this).val(); //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata ajax senza parametro "nome artista"
 
     if (option_selezionata == "") {
-      chiamata_ajax(true, "");
+      chiamata_ajax(true);
     } else {
       //altrimenti effettuo la chiamata ajax passando il parametro dell'artisto selezionato nella select
       chiamata_ajax(true, option_selezionata);
@@ -16152,8 +16151,7 @@ $(document).ready(function () {
       aggiungi_disco(disco);
 
       if (filter == false) {
-        console.log("ciao"); //popolo la select
-
+        //popolo la select
         popola_select(disco.author);
       }
     }
