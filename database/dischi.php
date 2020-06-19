@@ -74,7 +74,7 @@ $dischi = [
 ];
 
 //se il file è chiamato da un ajax restituisco un JSON
-if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
     //verifico se l'utente mi passa una query string in Get
     if (!empty($_GET["artista"])) {
