@@ -50,7 +50,7 @@
                     foreach ($dischi as $disco) { ?>
                         <div class="disco-item">
                             <div class="poster-disco">
-                                <img src="<?php echo $disco["poster"] ?>" alt="">
+                                <img src="<?php echo $disco["poster"] ?>" alt="<?php echo "Copertina " . $disco["title"] ?>">
                             </div>
                             <div class="info-disco">
                                 <h2><?php echo $disco["title"] ?></h2>

@@ -10,7 +10,7 @@ $(document).ready(function() {
     var template_function = Handlebars.compile(template_html);
 
     //url file esterno
-    var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/database/ajax_dischi.php";
+    var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/database/api.php";
 
 
     //intercetto il cambio opzione sulla select
