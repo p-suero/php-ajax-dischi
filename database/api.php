@@ -1,6 +1,6 @@
 <?php
     //inserisco la lista dei dischi
-    require "php_dischi.php";
+    require "dischi.php";
 
     //verifico se l'utente mi passa una query string in Get
     if (!empty($_GET["artista"])) {

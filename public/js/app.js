@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -16080,10 +16080,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/js/versione-php/app.js":
-/*!************************************!*\
-  !*** ./src/js/versione-php/app.js ***!
-  \************************************/
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16098,22 +16098,33 @@ $(document).ready(function () {
   var template_html = $("#disco-template").html();
   var template_function = Handlebars.compile(template_html); //url file esterno
 
-  var url = "http://localhost:8888/boolean-esercizi_php/php-ajax-dischi/database/api.php"; //intercetto il cambio opzione sulla select
+  var url = "../../database/api.php"; //se la chiamata viene dall'index html popolo la pagina con ajax
+
+  if ($(".ajax-page").length) {
+    console.log("ciao"); //preparo il template per le option
+
+    var option_template_html = $("#option-template").html();
+    var template_function_option = Handlebars.compile(option_template_html); //effettuo la chiamata ajax per recuperare i dischi all'apertura della pagina
+
+    chiamata_ajax(false);
+  } //intercetto il cambio opzione sulla select
+
 
   $("#author-filter").change(function () {
     //creo una variabile con il valore dell'option selezionata
     var option_selezionata = $(this).val(); //se il valore è uguale a "visualizza tutti gli artisti" allora effettuo la chiamata ajax senza parametro "nome artista"
 
     if (option_selezionata == "") {
-      chiamata_ajax("");
+      chiamata_ajax(true, "");
     } else {
-      //altrimenti effettuo la chiamata ajax passando il parametro dell'artista selezionata nella select
-      chiamata_ajax(option_selezionata);
+      //altrimenti effettuo la chiamata ajax passando il parametro dell'artisto selezionato nella select
+      chiamata_ajax(true, option_selezionata);
     }
   }); //*****FUNZIONI********//
   //********************//
 
-  function chiamata_ajax(nome_artista) {
+  function chiamata_ajax(filter) {
+    var nome_artista = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
     $.ajax({
       "url": url,
       "method": "GET",
@@ -16122,9 +16133,9 @@ $(document).ready(function () {
       },
       "success": function success(data) {
         //rimuovo tutti i dischi in pagina
-        $("#album .container").html(""); //chiamo la funzione gestione_dati che si occupa di reperire le info dai dischi
+        $("#album .container").html(""); //chiamo la funzione gestione_dati che si occupa di raccogliere le info dai dischi
 
-        gestione_dati(data);
+        gestione_dati(data, filter);
       },
       "error": function error() {
         alert("Si è verificato un errore");
@@ -16132,13 +16143,19 @@ $(document).ready(function () {
     });
   }
 
-  function gestione_dati(lista_dischi) {
+  function gestione_dati(lista_dischi, filter) {
     //ciclo l'array per recuperare i singoli dischi
     for (var i = 0; i < lista_dischi.length; i++) {
       //creo una variabile contenente il disco corrente
       var disco = lista_dischi[i]; //inserisco il disco in pagina
 
       aggiungi_disco(disco);
+
+      if (filter == false) {
+        console.log("ciao"); //popolo la select
+
+        popola_select(disco.author);
+      }
     }
   }
 
@@ -16155,18 +16172,43 @@ $(document).ready(function () {
     var html_finale = template_function(context);
     $("#album .container").append(html_finale);
   }
+
+  function popola_select(autore) {
+    if ($("#author-filter option[value='" + autore + "']").text() != autore) {
+      //popolo la select inserendo l'autore
+      var context_option = {
+        "valore": autore,
+        "testo": autore
+      }; //preparo la funzione di handlebars
+
+      var html_finale = template_function_option(context_option);
+      $("#author-filter").append(html_finale);
+    }
+  }
 });
 
 /***/ }),
 
-/***/ 1:
-/*!******************************************!*\
-  !*** multi ./src/js/versione-php/app.js ***!
-  \******************************************/
+/***/ "./src/scss/app.scss":
+/*!***************************!*\
+  !*** ./src/scss/app.scss ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
+/*!*************************************************!*\
+  !*** multi ./src/js/app.js ./src/scss/app.scss ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean-esercizi_php\php-ajax-dischi\src\js\versione-php\app.js */"./src/js/versione-php/app.js");
+__webpack_require__(/*! C:\MAMP\htdocs\boolean-esercizi_php\php-ajax-dischi\src\js\app.js */"./src/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\boolean-esercizi_php\php-ajax-dischi\src\scss\app.scss */"./src/scss/app.scss");
 
 
 /***/ })

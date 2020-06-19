@@ -1,5 +1,4 @@
 {
-    "/public/js/versione-ajax/app.js": "/public/js/versione-ajax/app.js",
-    "/public/css/app.css": "/public/css/app.css",
-    "/public/js/versione-php/app.js": "/public/js/versione-php/app.js"
+    "/public/js/app.js": "/public/js/app.js",
+    "/public/css/app.css": "/public/css/app.css"
 }

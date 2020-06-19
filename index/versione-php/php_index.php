@@ -1,6 +1,6 @@
 <?php
     //includo la pagina esterna contenente la lista album
-    require "../../database/php_dischi.php";
+    require "../../database/dischi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -80,6 +80,6 @@
             </div>
         </script>
         <!-- link script JS -->
-        <script src="../../public/js/versione-php/app.js" charset="utf-8"></script>
+        <script src="../../public/js/app.js" charset="utf-8"></script>
     </body>
 </html>
